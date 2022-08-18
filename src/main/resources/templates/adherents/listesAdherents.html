@@ -1,0 +1,63 @@
+<html layout:decorate="~{gabbarit}">
+
+<head>
+    <meta charset="ISO-8859-1">
+</head>
+<div layout:fragment="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="p-5">
+    <div class="col-md-12" align="center">
+     <a class="small" th:href="@{/adherents/trouverAdherent}"> Chercher un adhérent</a>
+    </div>
+                    <div class="card shadow mb-4 mt-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Listes des adhérents</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive text-center">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>CIN</th>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Date de naissance</th>
+                                            <th>Adresse</th>
+                                            <th> Actions </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="adherent : ${listesAdherents}">
+                                            <td th:text="${adherent.cin}"></td>
+                                            <td th:text="${adherent.nom}"></td>
+                                            <td th:text="${adherent.prenom}"></td>
+                                            <td th:text="${adherent.dateNaissance}"></td>
+                                            <td th:text="${adherent.adresse}"></td>
+
+                                            <td> <a th:href="@{/adherents/modificationAdherent/{idAdherent}(idAdherent=${adherent.idAdherent})}"
+                                                    class="btn btn-primary">Modifier</a>
+                                                <a th:href="@{/adherents/suppressionAdherent/{idAdherent}(idAdherent=${adherent.idAdherent})}"
+                                                	onClick="if (!(confirm('Voulez vous vraiment supprimer cet adhérent ?'))) return false"
+                                                    class="btn btn-danger">Supprimer</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="text-center">
+                        <a class="small" th:href="@{/adherents/ajoutAdherent}"> Nouvel adhérent</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</html>

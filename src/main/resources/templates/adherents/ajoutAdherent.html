@@ -1,0 +1,64 @@
+<html layout:decorate="~{gabbarit}">
+
+<head>
+    <meta charset="ISO-8859-1">
+</head>
+<div layout:fragment="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="p-5">
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Nouvel adhérent</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <form action="#" th:action="@{/adherents/insertionAdherent}" th:object="${adherent}"
+                                    method="POST">
+                                    <div class="mb-3"> <input type="text" th:field="*{cin}" placeholder="CIN"
+                                            class="form-control">
+                                        <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('cin')}"
+                                            th:errors="*{cin}" />
+                                    </div>
+                                    <div class="mb-3"> <input type="text" th:field="*{nom}" placeholder="Nom"
+                                            class="form-control">
+                                        <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('nom')}"
+                                            th:errors="*{nom}" />
+
+                                    </div>
+                                    <div class="mb-3"> <input type="text" th:field="*{prenom}" placeholder="Prénom"
+                                            class="form-control">
+                                        <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('prenom')}"
+                                            th:errors="*{prenom}" />
+                                    </div>
+                                    <div class="mb-3"> <input type="date" th:field="*{dateNaissance}"
+                                            placeholder="Date de naissance" class="form-control">
+                                        <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('dateNaissance')}"
+                                            th:errors="*{dateNaissance}" />
+                                    </div>
+                                    <div class="mb-3"> <input type="text" th:field="*{adresse}" placeholder="Adresse"
+                                            class="form-control">
+                                        <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('adresse')}"
+                                            th:errors="*{adresse}" />
+                                    </div>
+                                    <button type="submit" class="btn btn-info col-6"> Insérer</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <a class="small" th:href="@{/adherents/}"> Listes des adhérents</a>
+                        <br>
+                        <a class="small" th:href="@{/adherents/trouverAdherent}"> Chercher un adhérent</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</html>
