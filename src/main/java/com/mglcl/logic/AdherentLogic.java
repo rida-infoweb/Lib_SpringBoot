@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 public class AdherentLogic implements AdherentService{
 
 	
-    
     private AdherentRepository adherentRepository;
     
     @Autowired
@@ -24,12 +23,12 @@ public class AdherentLogic implements AdherentService{
     
 	@Override
 	public List<Adherent> getAllAdherents() {
-		return adherentRepository.findAll();
+		return  adherentRepository.findAll();
 	}
 
 	@Override
 	public void saveAdherent(Adherent adherent) {
-		this.adherentRepository.save(adherent)		;
+		adherentRepository.save(adherent)		;
 	}
 
 	@Override
@@ -46,9 +45,24 @@ public class AdherentLogic implements AdherentService{
 
 	@Override
 	public void deleteAdherentById(int idAdherent) {
-this.adherentRepository.deleteById(idAdherent);		
+		this.adherentRepository.deleteById(idAdherent);		
 	}
 
-	
+	@Override
+	public Adherent getAdherentByCin(String cin) {
+        Optional < Adherent > optional = Optional.ofNullable(adherentRepository.findByCin(cin));
+        Adherent adherent = null;
+        if (optional.isPresent()) {
+        	adherent = optional.get();
+        } else {
+            throw new RuntimeException(" Adhérent introuvable avec ce CIN :: " + cin);
+        }
+        return adherent;	}
+
+	@Override
+	public long getAdherentCount() {
+		return adherentRepository.count();
+	}
+
 
 }

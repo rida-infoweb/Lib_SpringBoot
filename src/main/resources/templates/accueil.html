@@ -13,7 +13,15 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                     Adhérents</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <p th:text="${adherents}"></p>
+                                    <section th:if="${adherents == null}">
+                                        <p th:text="${adherents}"></p>
+                                    </section>
+                                    <Section th:if="${adherents == null}">
+                                        <p>0</p>
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     </div>

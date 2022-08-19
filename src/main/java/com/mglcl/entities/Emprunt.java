@@ -15,6 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Emprunt implements Serializable {
 private static final long serialVersionUID = 1L;
@@ -43,11 +45,13 @@ private int idEmprunt;
 
 @NotNull
 @NotBlank (message = "Ce champ est obligatoire !")
+@DateTimeFormat(pattern = "yyyy-MM-dd")
 @Temporal(TemporalType.DATE)
 private Date dateEmprunt;
 
 @NotNull
 @NotBlank (message = "Ce champ est obligatoire !")
+@DateTimeFormat(pattern = "yyyy-MM-dd")
 @Temporal(TemporalType.DATE)
 private Date dateRetour;
 
@@ -78,6 +82,83 @@ public Emprunt(Adherent adherent, Livre livre, Dictionnaire dictionnaire, Revue 
 	this.idEmprunt = idEmprunt;
 	this.dateEmprunt = dateEmprunt;
 	this.dateRetour = dateRetour;
+}
+
+
+public Adherent getAdherent() {
+	return adherent;
+}
+
+
+public void setAdherent(Adherent adherent) {
+	this.adherent = adherent;
+}
+
+
+public Livre getLivre() {
+	return livre;
+}
+
+
+public void setLivre(Livre livre) {
+	this.livre = livre;
+}
+
+
+public Dictionnaire getDictionnaire() {
+	return dictionnaire;
+}
+
+
+public void setDictionnaire(Dictionnaire dictionnaire) {
+	this.dictionnaire = dictionnaire;
+}
+
+
+public Revue getRevue() {
+	return revue;
+}
+
+
+public void setRevue(Revue revue) {
+	this.revue = revue;
+}
+
+
+public int getIdEmprunt() {
+	return idEmprunt;
+}
+
+
+public void setIdEmprunt(int idEmprunt) {
+	this.idEmprunt = idEmprunt;
+}
+
+
+public Date getDateEmprunt() {
+	return dateEmprunt;
+}
+
+
+public void setDateEmprunt(Date dateEmprunt) {
+	this.dateEmprunt = dateEmprunt;
+}
+
+
+public Date getDateRetour() {
+	return dateRetour;
+}
+
+
+public void setDateRetour(Date dateRetour) {
+	this.dateRetour = dateRetour;
+}
+
+
+@Override
+public String toString() {
+	return "Emprunt [adherent=" + adherent + ", livre=" + livre + ", dictionnaire=" + dictionnaire + ", revue=" + revue
+			+ ", idEmprunt=" + idEmprunt + ", dateEmprunt=" + dateEmprunt + ", dateRetour=" + dateRetour + "]";
 }
 
 

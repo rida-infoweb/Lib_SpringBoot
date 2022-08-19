@@ -15,6 +15,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Revue extends Document{
 	
@@ -33,6 +35,7 @@ private Set<Emprunt> emprunts;
 
 @NotNull
 @NotBlank (message = "Ce champ est obligatoire !")
+@DateTimeFormat(pattern = "yyyy-MM-dd")
 @Temporal(TemporalType.DATE)
 private Date anneePublication;
 

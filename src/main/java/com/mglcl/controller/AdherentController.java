@@ -22,16 +22,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdherentController {
 	
 	  private AdherentService adherentService;
+	  
 	  @Autowired
 	  public AdherentController (AdherentService adherentService) {
 		  this.adherentService=adherentService;
-	  }  
+	  } 
+	  
 	    @GetMapping("/")
 	    public String listesAdherents(Model model) {
 	    	List<Adherent> listesAdherents = adherentService.getAllAdherents(); 	
 	    	model.addAttribute("listesAdherents", listesAdherents);
 			return "adherents/listesAdherents";
 	    }
+	    
 	    @GetMapping("/trouverAdherent")
 	    public String rechercheAdherent(Model model) {
 	        Adherent adherent = new Adherent();
@@ -41,7 +44,8 @@ public class AdherentController {
 	    
 	    @PostMapping("/rechercheAdherent")
 	    public String rechercheAdherent(@ModelAttribute Adherent adherent, Model model) {
-	        model.addAttribute("adherent", adherentService.getAdherentById(adherent.getIdAdherent()));
+//	        model.addAttribute("adherent", adherentService.getAdherentById(adherent.getIdAdherent()));
+	        model.addAttribute("adherent", adherentService.getAdherentByCin(adherent.getCin()));
 	        return "adherents/rechercheAdherent";
 	    }
 	    	    

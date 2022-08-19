@@ -15,37 +15,39 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                           
-<form action="#" th:action="@{/adherents/rechercheAdherent}" th:object="${adherent}" method="POST">
- <div class="mb-3"> <input type="number" th:field="*{idAdherent}" placeholder="Id" class="form-control">
-    </div>
-<button type="submit" class="btn btn-info col-6"> Chercher</button>
-    </form>
+
+                                <form action="#" th:action="@{/adherents/rechercheAdherent}" th:object="${adherent}"
+                                    method="POST">
+                                    <div class="mb-3"> <input type="text" th:field="*{cin}" placeholder="CIN"
+                                            class="form-control">
+                                    </div>
+                                    <button type="submit" class="btn btn-info col-6"> Chercher</button>
+                                </form>
                             </div>
                         </div>
                     </div>
 
-    <section th:if="${adherent.cin != null}">
-<div class="card">
-  <h5 class="card-header" th:text="'Adhérent N° :  ' + ${adherent.idAdherent}"></h5>
-  <div class="card-body">
-    <p class="card-text" th:text="'CIN :  ' + ${adherent.cin}"></p>
-    <p class="card-text" th:text="'Nom :  ' + ${adherent.nom}"></p>
-    <p class="card-text" th:text="'Prénom :  ' + ${adherent.prenom}"></p>
-    <p class="card-text" th:text="'Date de naissance :  ' + ${adherent.dateNaissance}"></p>
-    <p class="card-text" th:text="'Adresse :  ' + ${adherent.adresse}"></p>
+                    <section th:if="${adherent.cin != null}">
+                        <div class="card">
+                            <h5 class="card-header" th:text="'Adhérent N° :  ' + ${adherent.idAdherent}"></h5>
+                            <div class="card-body">
+                                <p class="card-text" th:text="'CIN :  ' + ${adherent.cin}"></p>
+                                <p class="card-text" th:text="'Nom :  ' + ${adherent.nom}"></p>
+                                <p class="card-text" th:text="'Prénom :  ' + ${adherent.prenom}"></p>
+                                <p class="card-text" th:text="'Date de naissance :  ' + ${adherent.dateNaissance}"></p>
+                                <p class="card-text" th:text="'Adresse :  ' + ${adherent.adresse}"></p>
 
-  </div>
-</div>
-</section>
-    <Section th:if="${adherent.cin == null}">
-    <div class="alert alert-primary" role="alert">
-  Veuillez saisir un ID !
-</div>
-    </section>
+                            </div>
+                        </div>
+                    </section>
+                    <Section th:if="${adherent.cin == null}">
+                        <div class="alert alert-primary" role="alert">
+                            Veuillez saisir un ID !
+                        </div>
+                    </section>
 
 
-<div class="text-center">
+                    <div class="text-center">
                         <a class="small" th:href="@{/adherents/}"> Listes des adhérents</a>
                     </div>
                 </div>
