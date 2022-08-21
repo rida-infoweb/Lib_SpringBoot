@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -23,6 +24,9 @@ public class Adherent implements Serializable{
 	
 
 private static final long serialVersionUID = 1L;
+
+@OneToOne(mappedBy = "adherent")
+private User user;
 
 @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 private int idAdherent;
@@ -58,8 +62,13 @@ public Adherent() {
 	//TODO Auto-generated constructor stub
 }
 
-public Adherent(String nom, String prenom, String adresse, String cin, Date dateNaissance) {
+
+
+
+
+public Adherent(User user, String nom,String prenom,String adresse,String cin, Date dateNaissance) {
 	super();
+	this.user = user;
 	this.nom = nom;
 	this.prenom = prenom;
 	this.adresse = adresse;
@@ -68,8 +77,12 @@ public Adherent(String nom, String prenom, String adresse, String cin, Date date
 }
 
 
-public Adherent(int idAdherent, String nom, String prenom, String adresse, String cin, Date dateNaissance) {
+
+
+
+public Adherent(User user, int idAdherent, String nom,String prenom,String adresse, String cin,Date dateNaissance) {
 	super();
+	this.user = user;
 	this.idAdherent = idAdherent;
 	this.nom = nom;
 	this.prenom = prenom;
@@ -77,8 +90,6 @@ public Adherent(int idAdherent, String nom, String prenom, String adresse, Strin
 	this.cin = cin;
 	this.dateNaissance = dateNaissance;
 }
-
-
 
 
 public int getIdAdherent() {
@@ -130,31 +141,37 @@ public void setCin(String cin) {
 	this.cin = cin;
 }
 
-
 public Date getDateNaissance() {
 	return dateNaissance;
 }
-
 
 public void setDateNaissance(Date dateNaissance) {
 	this.dateNaissance = dateNaissance;
 }
 
-
 public Set<Emprunt> getEmprunts() {
 	return emprunts;
 }
-
 
 public void setEmprunts(Set<Emprunt> emprunts) {
 	this.emprunts = emprunts;
 }
 
+public User getUser() {
+	return user;
+}
+
+public void setUser(User user) {
+	this.user = user;
+}
+
 @Override
 public String toString() {
-	return "Adherent [idAdherent=" + idAdherent + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse
-			+ ", cin=" + cin + ", dateNaissance=" + dateNaissance + ", emprunts=" + emprunts + "]";
+	return "Adherent [user=" + user + ", idAdherent=" + idAdherent + ", nom=" + nom + ", prenom=" + prenom
+			+ ", adresse=" + adresse + ", cin=" + cin + ", dateNaissance=" + dateNaissance + ", emprunts=" + emprunts
+			+ "]";
 }
+
 
 
 }

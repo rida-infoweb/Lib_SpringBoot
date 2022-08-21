@@ -15,7 +15,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <form action="#" th:action="@{/adherents/insertionAdherent}" th:object="${adherent}"
+                                <form action="#" th:action="@{/adherents/insertion}" th:object="${adherent}"
                                     method="POST">
                                     <div class="mb-3"> <input type="text" th:field="*{cin}" placeholder="CIN"
                                             class="form-control">
@@ -50,9 +50,9 @@
                     </div>
                     <hr>
                     <div class="text-center">
-                        <a class="small" th:href="@{/adherents/}"> Listes des adhérents</a>
+                        <a class="small" th:href="@{/adherents/listes}"> Listes des adhérents</a>
                         <br>
-                        <a class="small" th:href="@{/adherents/trouverAdherent}"> Chercher un adhérent</a>
+                        <a class="small" th:href="@{/adherents/recherche}"> Chercher un adhérent</a>
                     </div>
                 </div>
             </div>

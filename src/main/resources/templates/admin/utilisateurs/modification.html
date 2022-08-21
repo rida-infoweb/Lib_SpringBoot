@@ -1,0 +1,53 @@
+<html layout:decorate="~{gabbarit}">
+
+<head>
+    <meta charset="ISO-8859-1">
+</head>
+<div layout:fragment="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="p-5">
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Utilisateur : <span th:text="${utilisateur.id}"> </span></h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <form action="#" th:action="@{/utilisateurs/modification}" th:object="${utilisateur}" method="POST">
+                                    <input type="hidden" th:field="*{id}" />
+                                    <input type="hidden" th:field="*{username}" />
+                                    <input type="hidden" th:field="*{password}" />
+<select class="form-control" id="parts" name="roles" multiple="multiple">
+    <option th:each="role : ${roles}"
+            th:selected="${role}"
+            th:value="${role.id}"
+            th:text="${role.name}">Part name</option>
+</select>
+
+                                    <div class="mb-3">
+  <input class="ml-2 form-check-input" type="checkbox" th:field="*{enabled}" id="flexCheckDefault">
+  <label class="form-check-label ml-4" for="flexCheckDefault">
+    Utilisateur actif
+  </label>
+</div>
+ 
+                                    <button type="submit" class="btn btn-info col-6"> Modifier</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <a class="small" th:href="@{/utilisateurs/listes}"> Listes des utilisateurs</a>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</html>

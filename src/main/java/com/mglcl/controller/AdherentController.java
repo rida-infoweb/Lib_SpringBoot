@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/adherents")
+@RequestMapping("/adherents/")
 public class AdherentController {
 	
 	  private AdherentService adherentService;
@@ -27,69 +27,61 @@ public class AdherentController {
 	  public AdherentController (AdherentService adherentService) {
 		  this.adherentService=adherentService;
 	  } 
-	  
-	    @GetMapping("/")
+	    @GetMapping("listes")
 	    public String listesAdherents(Model model) {
 	    	List<Adherent> listesAdherents = adherentService.getAllAdherents(); 	
 	    	model.addAttribute("listesAdherents", listesAdherents);
-			return "adherents/listesAdherents";
+			return "admin/adherents/listes";
 	    }
-	    
-	    @GetMapping("/trouverAdherent")
+	    @GetMapping("recherche")
 	    public String rechercheAdherent(Model model) {
 	        Adherent adherent = new Adherent();
 	        model.addAttribute("adherent", adherent);
-	        return "adherents/rechercheAdherent";
+	        return "admin/adherents/recherche";
 	    }
-	    
-	    @PostMapping("/rechercheAdherent")
+	    @PostMapping("recherche")
 	    public String rechercheAdherent(@ModelAttribute Adherent adherent, Model model) {
 //	        model.addAttribute("adherent", adherentService.getAdherentById(adherent.getIdAdherent()));
 	        model.addAttribute("adherent", adherentService.getAdherentByCin(adherent.getCin()));
-	        return "adherents/rechercheAdherent";
+	        return "admin/adherents/recherche";
 	    }
-	    	    
-	    @GetMapping("/ajoutAdherent")
-	    public String ajoutAdherent(Model model) {
+	    @GetMapping("insertion")
+	    public String insertionAdherent(Model model) {
 	        Adherent adherent = new Adherent();
 	        model.addAttribute("adherent", adherent);
-	        return "adherents/ajoutAdherent";
+	        return "admin/adherents/insertion";
 	    }
-	    
-	    @PostMapping("/insertionAdherent")
+	    @PostMapping("insertion")
 	    public String insertionAdherent( @Valid @ModelAttribute("adherent") Adherent adherent,  BindingResult bindingResult) {
 	    	  if (bindingResult.hasErrors()) {
-		            return "adherents/ajoutAdherent";
+		            return "admin/adherents/insertion";
 		        } 
 	    	  else {
 			        adherentService.saveAdherent(adherent);
-			        return "redirect:/adherents/";
+			        return "redirect:/adherents/listes";
 		        }
 	    }
-	    
-	    @PostMapping("/modificationAdherent")
+	    @PostMapping("modification")
 	    public String modificationAdherent( @Valid @ModelAttribute("adherent") Adherent adherent,  BindingResult bindingResult) {
 	    	  if (bindingResult.hasErrors()) {
-		            return "adherents/modificationAdherent";
+		            return "admin/adherents/modification";
 		        } 
 	    	  else {
 			        adherentService.saveAdherent(adherent);
-			        return "redirect:/adherents/";
+			        return "redirect:/adherents/listes";
 		        }
 	    }
-
-	    @GetMapping("/modificationAdherent/{idAdherent}")
+	    @GetMapping("modification/{idAdherent}")
 	    public String modificationAdherent(@PathVariable(value = "idAdherent") int idAdherent, Model model ) {
 	    	    Adherent adherent = adherentService.getAdherentById(idAdherent);
 		        model.addAttribute("adherent", adherent);
-		        return "adherents/modificationAdherent";
+		        return "admin/adherents/modification";
 	    	  }
 	    
-
-	    @GetMapping("/suppressionAdherent/{idAdherent}")
+	    @GetMapping("suppression/{idAdherent}")
 	    public String suppressionAdherent(@PathVariable(value = "idAdherent") int idAdherent) {
 	        this.adherentService.deleteAdherentById(idAdherent);
-	        return "redirect:/adherents/";
+	        return "redirect:/adherents/listes";
 	    }
 		
 }

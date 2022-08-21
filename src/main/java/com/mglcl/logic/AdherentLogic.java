@@ -3,8 +3,8 @@ package com.mglcl.logic;
 import java.util.List;
 import java.util.Optional;
 
-import com.mglcl.dao.AdherentRepository;
 import com.mglcl.entities.Adherent;
+import com.mglcl.repository.AdherentRepository;
 import com.mglcl.services.AdherentService;
 
 import org.springframework.beans.factory.annotation.Autowired;

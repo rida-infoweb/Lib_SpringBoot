@@ -1,4 +1,4 @@
-package com.mglcl.dao;
+package com.mglcl.repository;
 
 import com.mglcl.entities.Langue;
 

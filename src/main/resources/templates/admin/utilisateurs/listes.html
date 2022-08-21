@@ -1,0 +1,59 @@
+<html layout:decorate="~{gabbarit}">
+
+<head>
+    <meta charset="ISO-8859-1">
+</head>
+<div layout:fragment="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="p-5">
+
+                    <div class="card shadow mb-4 mt-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Listes des utilisateurs</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive text-center">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom d'utilisateur</th>
+                                            <th>Actif</th>
+                                            <th>Rôles</th>
+                                            <th> Actions </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="utilisateur : ${listesUtilisateurs}">
+                                            <td th:text="${utilisateur.username}"></td>
+                                            <td th:text="${utilisateur.enabled}"></td>
+ 
+       <td>
+               <ul th:each="role : ${utilisateur.roles}">
+        <li><span th:text="${role.name}"> Title </span></li>
+        </ul> 
+</td>
+
+                                            <td> <a th:href="@{/utilisateurs/modification/{id}(id=${utilisateur.id})}"
+                                                    class="btn btn-primary">Modifier</a>
+                                                <a th:href="@{/utilisateurs/suppression/{id}(id=${utilisateur.id})}"
+                                                	onClick="if (!(confirm('Voulez vous vraiment supprimer cet utilisateur ?'))) return false"
+                                                    class="btn btn-danger">Supprimer</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</html>

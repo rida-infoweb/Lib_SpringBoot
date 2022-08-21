@@ -15,7 +15,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <form action="#" th:action="@{/adherents/modificationAdherent}" th:object="${adherent}" method="POST">
+                                <form action="#" th:action="@{/adherents/modification}" th:object="${adherent}" method="POST">
                                     <input type="hidden" th:field="*{idAdherent}" />
                                      <div class="mb-3"> <input type="text" th:field="*{cin}" class="form-control">
                                         <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('cin')}"
@@ -45,9 +45,9 @@
                     </div>
                     <hr>
                     <div class="text-center">
-                        <a class="small" th:href="@{/adherents/}"> Listes des adhérents</a>
+                        <a class="small" th:href="@{/adherents/listes}"> Listes des adhérents</a>
                         <br>
-                        <a class="small" th:href="@{/adherents/trouverAdherent}"> Chercher un adhérent</a>
+                        <a class="small" th:href="@{/adherents/recherche}"> Chercher un adhérent</a>
                     </div>
                 </div>
             </div>
