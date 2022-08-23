@@ -43,27 +43,40 @@ public Revue() {
 	super();
 }
 
+public int getIdRevue() {
+	return idRevue;
+}
 
-public Revue(int idRevue, String reference, Date anneePublication,float prixDeVente) {
-	super(prixDeVente);
+public void setIdRevue(int idRevue) {
 	this.idRevue = idRevue;
+}
+
+public String getReference() {
+	return reference;
+}
+
+public void setReference(String reference) {
 	this.reference = reference;
+}
+
+public Set<Emprunt> getEmprunts() {
+	return emprunts;
+}
+
+public void setEmprunts(Set<Emprunt> emprunts) {
+	this.emprunts = emprunts;
+}
+
+public Date getAnneePublication() {
+	return anneePublication;
+}
+
+public void setAnneePublication(Date anneePublication) {
 	this.anneePublication = anneePublication;
 }
 
-public Revue( String reference, Date anneePublication,float prixDeVente) {
-	super(prixDeVente);
-	this.reference = reference;
-	this.anneePublication = anneePublication;
+public static long getSerialversionuid() {
+	return serialVersionUID;
 }
-
-
-@Override
-public String toString() {
-	return "Revue [idRevue=" + idRevue + ", reference=" + reference + ", emprunts=" + emprunts + ", anneePublication="
-			+ anneePublication + "]";
-}
-
-
 
 }

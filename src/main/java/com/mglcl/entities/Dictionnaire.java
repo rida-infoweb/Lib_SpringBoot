@@ -24,9 +24,9 @@ private int idDictionnaire;
 @Column(unique= true)
 @NotNull
 @NotBlank (message = "Ce champ est obligatoire !")
-private int identificateurDictionnaire ;
+private String identificateurDictionnaire ;
 
-@NotBlank (message = "Ce champ est obligatoire !")
+@NotNull
 @ManyToOne
 @JoinColumn(name="idLangue")
 private Langue langue;
@@ -40,20 +40,6 @@ public Dictionnaire() {
 }
 
 
-public Dictionnaire(int idDictionnaire,int identificateurDictionnaire, Langue langue,float prixDeVente) {
-	super(prixDeVente);
-	this.idDictionnaire = idDictionnaire;
-	this.identificateurDictionnaire = identificateurDictionnaire;
-	this.langue = langue;
-}
-
-public Dictionnaire(int identificateurDictionnaire, Langue langue,float prixDeVente) {
-	super(prixDeVente);
-	this.identificateurDictionnaire = identificateurDictionnaire;
-	this.langue = langue;
-}
-
-
 public int getIdDictionnaire() {
 	return idDictionnaire;
 }
@@ -64,12 +50,12 @@ public void setIdDictionnaire(int idDictionnaire) {
 }
 
 
-public int getIdentificateurDictionnaire() {
+public String getIdentificateurDictionnaire() {
 	return identificateurDictionnaire;
 }
 
 
-public void setIdentificateurDictionnaire(int identificateurDictionnaire) {
+public void setIdentificateurDictionnaire(String identificateurDictionnaire) {
 	this.identificateurDictionnaire = identificateurDictionnaire;
 }
 
@@ -94,14 +80,9 @@ public void setEmprunts(Set<Emprunt> emprunts) {
 }
 
 
-@Override
-public String toString() {
-	return "Dictionnaire [idDictionnaire=" + idDictionnaire + ", identificateurDictionnaire="
-			+ identificateurDictionnaire + ", langue=" + langue + ", emprunts=" + emprunts + "]";
+public static long getSerialversionuid() {
+	return serialVersionUID;
 }
-
-
-
 
 
 }

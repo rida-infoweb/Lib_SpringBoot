@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
@@ -16,7 +17,7 @@ public class Langue implements Serializable {
 
 private static final long serialVersionUID = 1L;
 
-@Id @GeneratedValue
+@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 private int idLangue;
 
 @Column(unique= true)
@@ -29,19 +30,8 @@ private Collection<Dictionnaire> dictionnaires;
 
 public Langue() {
 	super();
-	// TODO Auto-generated constructor stub
 }
 
-public Langue(int idLangue, String langue) {
-	super();
-	this.idLangue = idLangue;
-	this.langue = langue;
-}
-
-public Langue( String langue) {
-	super();
-	this.langue = langue;
-}
 
 public int getIdLangue() {
 	return idLangue;
@@ -67,14 +57,10 @@ public void setDictionnaires(Collection<Dictionnaire> dictionnaires) {
 	this.dictionnaires = dictionnaires;
 }
 
-@Override
-public String toString() {
-	return "Langue [idLangue=" + idLangue + ", langue=" + langue + ", dictionnaires=" + dictionnaires + "]";
+
+public static long getSerialversionuid() {
+	return serialVersionUID;
 }
-
-
-
-
 
 
 

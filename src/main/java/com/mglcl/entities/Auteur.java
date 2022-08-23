@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
@@ -17,7 +18,7 @@ public class Auteur implements Serializable {
 
 private static final long serialVersionUID = 1L;
 
-@Id @GeneratedValue
+@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 private int idAuteur;
 
 @Column(unique= true)
@@ -31,17 +32,6 @@ private Collection<Livre> livres;
 public Auteur() {
 	super();
 	// TODO Auto-generated constructor stub
-}
-
-public Auteur(int idAuteur, String auteur) {
-	super();
-	this.idAuteur = idAuteur;
-	this.auteur = auteur;
-}
-
-public Auteur( String auteur) {
-	super();
-	this.auteur = auteur;
 }
 
 public int getIdAuteur() {
@@ -68,10 +58,10 @@ public void setLivres(Collection<Livre> livres) {
 	this.livres = livres;
 }
 
-@Override
-public String toString() {
-	return "Auteur [idAuteur=" + idAuteur + ", auteur=" + auteur + ", livres=" + livres + "]";
+public static long getSerialversionuid() {
+	return serialVersionUID;
 }
+
 
 
 

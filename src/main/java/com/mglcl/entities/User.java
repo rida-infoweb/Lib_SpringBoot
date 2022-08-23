@@ -16,7 +16,6 @@ public class User {
 
     private String username;
     
-    private boolean enabled;
 
     private String password;
 
@@ -80,12 +79,5 @@ public class User {
 		this.adherent = adherent;
 	}
 
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-    
+	
 }

@@ -1,0 +1,41 @@
+<html layout:decorate="~{gabbarit}">
+
+<head>
+    <meta charset="ISO-8859-1">
+</head>
+<div layout:fragment="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="p-5">
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Langue : <span th:text="${lAngue.idLangue}"> </span></h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <form action="#" th:action="@{/langues/modification}" th:object="${lAngue}" method="POST">
+                                    <input type="hidden" th:field="*{idLangue}" />
+                                     <div class="mb-3"> <input type="text" th:field="*{langue}" class="form-control">
+                                        <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('langue')}"
+                                            th:errors="*{langue}" />
+                                    </div>
+                                    <button type="submit" class="btn btn-info col-6"> Modifier</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <a class="small" th:href="@{/langues/listes}"> Listes des langues</a>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</html>

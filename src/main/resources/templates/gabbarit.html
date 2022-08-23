@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"><head>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
     <meta charset="ISO-8859-1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,77 +24,77 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-text mx-3">Bibliothèque</div>
             </a>
-                    
- <div sec:authorize="hasRole('ROLE_ADMIN')">
-    <hr class="sidebar-divider my-0">
-    <li class="nav-item active">
-        <a class="nav-link" th:href="@{/accueil}">
-            <span>Accueil</span></a>
-    </li>
-    <hr class="sidebar-divider">
 
-     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseadh"
-            aria-expanded="true" aria-controls="collapseadh">
-            <span>Adhérents</span>
-        </a>
-        <div id=collapseadh class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Détails:</h6>
-                <a class="collapse-item" th:href="@{/adherents/listes}">Adhérents</a>
-                <a class="collapse-item" th:href=@{/utilisateurs/listes}>Utilisateurs</a>
-                <a class="collapse-item" th:href=@{/roles/listes}>Rôles</a>
-                
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <hr class="sidebar-divider my-0">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/accueil}">
+                        <span>Accueil</span></a>
+                </li>
+                <hr class="sidebar-divider">
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseadh"
+                        aria-expanded="true" aria-controls="collapseadh">
+                        <span>Adhérents</span>
+                    </a>
+                    <div id=collapseadh class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Détails:</h6>
+                            <a class="collapse-item" th:href="@{/adherents/listes}">Adhérents</a>
+                            <a class="collapse-item" th:href=@{/utilisateurs/listes}>Utilisateurs</a>
+                            <a class="collapse-item" th:href=@{/roles/listes}>Rôles</a>
+
+                        </div>
+                    </div>
+                </li>
+
+                <hr class="sidebar-divider">
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsedic"
+                        aria-expanded="true" aria-controls="collapsedic">
+                        <span>Dictionnaires</span>
+                    </a>
+                    <div id="collapsedic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Détails:</h6>
+                            <a class="collapse-item" th:href="@{/dictionnaires/listes}">Dictionnaires</a>
+                            <a class="collapse-item" th:href="@{/langues/listes}">Langues</a>
+                        </div>
+                    </div>
+                </li>
+                <hr class="sidebar-divider">
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseliv"
+                        aria-expanded="true" aria-controls="collapseliv">
+                        <span>Livres</span>
+                    </a>
+                    <div id="collapseliv" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Détails:</h6>
+                            <a class="collapse-item" th:href="@{/livres/listes}">Livres</a>
+                            <a class="collapse-item" th:href="@{/auteurs/listes}">Auteurs</a>
+                        </div>
+                    </div>
+                </li>
+                <hr class="sidebar-divider">
+                <li class="nav-item">
+                    <a class="nav-link" href="charts.html">
+                        <span>Revue</span></a>
+                </li>
+                <hr class="sidebar-divider">
+                <li class="nav-item">
+                    <a class="nav-link" href="charts.html">
+                        <span>Emprunts</span></a>
+                </li>
             </div>
-        </div>
-    </li>   
-    
-    <hr class="sidebar-divider">
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsedic"
-            aria-expanded="true" aria-controls="collapsedic">
-            <span>Dictionnaires</span>
-        </a>
-        <div id="collapsedic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Détails:</h6>
-                <a class="collapse-item" href="buttons.html">Dictionnaires</a>
-                <a class="collapse-item" href="cards.html">Langues</a>
+            <div sec:authorize="hasRole('ROLE_USER')">
+                <hr class="sidebar-divider">
+                <li class="nav-item">
+                    <a class="nav-link" href="charts.html">
+                        <span>Emprunts</span></a>
+                </li>
             </div>
-        </div>
-    </li>
-    <hr class="sidebar-divider">
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseliv"
-            aria-expanded="true" aria-controls="collapseliv">
-            <span>Livres</span>
-        </a>
-        <div id="collapseliv" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Détails:</h6>
-                <a class="collapse-item" href="buttons.html">Livres</a>
-                <a class="collapse-item" href="cards.html">Auteurs</a>
-            </div>
-        </div>
-    </li>
-    <hr class="sidebar-divider">
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <span>Revue</span></a>
-    </li>
-    <hr class="sidebar-divider">
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <span>Emprunts</span></a>
-    </li>
-</div>
-<div sec:authorize="hasRole('ROLE_USER')">
-    <hr class="sidebar-divider">
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <span>Emprunts</span></a>
-    </li>
-</div>
             <hr class="sidebar-divider d-none d-md-block">
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -101,12 +102,12 @@
             <div class="sidebar-card d-none d-lg-flex">
                 <div sec:authorize="isAuthenticated()">
                     <form id="logoutForm" method="POST" th:action="@{/logout}">
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     </form>
-            
-                    <span ></span><a onclick="document.forms['logoutForm'].submit()">Déconnexion</a>
+
+                    <span></span><a onclick="document.forms['logoutForm'].submit()">Déconnexion</a>
                 </div>
-             </div>
+            </div>
         </ul>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
@@ -116,12 +117,12 @@
                     </button>
                     <h1>Gestion de bibliothèque</h1>
                     <ul class="navbar-nav ml-auto">
-    <li class="nav-item dropdown no-arrow">
-<div>
-    Utilisateur : <span sec:authentication="name">User</span>
-</div>    
-</li>
-</ul>
+                        <li class="nav-item dropdown no-arrow">
+                            <div>
+                                Utilisateur : <span sec:authentication="name">User</span>
+                            </div>
+                        </li>
+                    </ul>
                 </nav>
 
                 <div layout:fragment="content">

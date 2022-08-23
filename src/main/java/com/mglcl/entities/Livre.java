@@ -23,11 +23,9 @@ private int idLivre;
 
 @Column(unique= true)
 @NotNull
-@NotBlank (message = "Ce champ est obligatoire !")
 private int identificateurLivre ;
 
 @NotNull
-@NotBlank (message = "Ce champ est obligatoire !")
 private int nombrePage;
 
 @ManyToOne(fetch = FetchType.LAZY)
@@ -40,24 +38,6 @@ private Set<Emprunt> emprunts;
 public Livre() {
 	super();
 }
-
-
-public Livre(int idLivre,int identificateurLivre, int nombrePage, Auteur auteur,float prixDeVente) {
-	super(prixDeVente);
-	this.idLivre = idLivre;
-	this.identificateurLivre = identificateurLivre;
-	this.nombrePage = nombrePage;
-	this.auteur = auteur;
-}
-
-
-public Livre(int identificateurLivre, int nombrePage, Auteur auteur,float prixDeVente) {
-	super(prixDeVente);
-	this.identificateurLivre = identificateurLivre;
-	this.nombrePage = nombrePage;
-	this.auteur = auteur;
-}
-
 
 public int getIdLivre() {
 	return idLivre;
@@ -108,13 +88,9 @@ public void setEmprunts(Set<Emprunt> emprunts) {
 	this.emprunts = emprunts;
 }
 
-
-@Override
-public String toString() {
-	return "Livre [idLivre=" + idLivre + ", identificateurLivre=" + identificateurLivre + ", nombrePage=" + nombrePage
-			+ ", auteur=" + auteur + ", emprunts=" + emprunts + "]";
+public static long getSerialversionuid() {
+	return serialVersionUID;
 }
-
 
 
 }

@@ -62,36 +62,6 @@ public Adherent() {
 	//TODO Auto-generated constructor stub
 }
 
-
-
-
-
-public Adherent(User user, String nom,String prenom,String adresse,String cin, Date dateNaissance) {
-	super();
-	this.user = user;
-	this.nom = nom;
-	this.prenom = prenom;
-	this.adresse = adresse;
-	this.cin = cin;
-	this.dateNaissance = dateNaissance;
-}
-
-
-
-
-
-public Adherent(User user, int idAdherent, String nom,String prenom,String adresse, String cin,Date dateNaissance) {
-	super();
-	this.user = user;
-	this.idAdherent = idAdherent;
-	this.nom = nom;
-	this.prenom = prenom;
-	this.adresse = adresse;
-	this.cin = cin;
-	this.dateNaissance = dateNaissance;
-}
-
-
 public int getIdAdherent() {
 	return idAdherent;
 }
@@ -165,12 +135,10 @@ public void setUser(User user) {
 	this.user = user;
 }
 
-@Override
-public String toString() {
-	return "Adherent [user=" + user + ", idAdherent=" + idAdherent + ", nom=" + nom + ", prenom=" + prenom
-			+ ", adresse=" + adresse + ", cin=" + cin + ", dateNaissance=" + dateNaissance + ", emprunts=" + emprunts
-			+ "]";
+public static long getSerialversionuid() {
+	return serialVersionUID;
 }
+
 
 
 

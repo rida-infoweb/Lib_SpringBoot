@@ -11,32 +11,24 @@
 
                     <div class="card shadow mb-4 mt-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Listes des utilisateurs</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Listes des auteurs</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive text-center">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Nom d'utilisateur</th>
-                                            <th>Rôles</th>
+                                            <th>Auteur</th>
                                             <th> Actions </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="utilisateur : ${listesUtilisateurs}">
-                                            <td th:text="${utilisateur.username}"></td>
- 
-       <td>
-               <ul th:each="role : ${utilisateur.roles}">
-        <li><span th:text="${role.name}"> Rôle </span></li>
-        </ul> 
-</td>
-
-                                            <td> <a th:href="@{/utilisateurs/modification/{id}(id=${utilisateur.id})}"
+                                        <tr th:each="auteur : ${listesAuteurs}">
+                                            <td th:text="${auteur.auteur}"></td>
+                                            <td> <a th:href="@{/auteurs/modification/{idAuteur}(idAuteur=${auteur.idAuteur})}"
                                                     class="btn btn-primary">Modifier</a>
-                                                <a th:href="@{/utilisateurs/suppression/{id}(id=${utilisateur.id})}"
-                                                	onClick="if (!(confirm('Voulez vous vraiment supprimer cet utilisateur ?'))) return false"
+                                                <a th:href="@{/auteurs/suppression/{idAuteur}(idAuteur=${auteur.idAuteur})}"
+                                                	onClick="if (!(confirm('Voulez vous vraiment supprimer cet adhérent ?'))) return false"
                                                     class="btn btn-danger">Supprimer</a>
                                             </td>
                                         </tr>
@@ -47,6 +39,9 @@
                     </div>
 
                     <hr>
+                    <div class="text-center">
+                        <a class="small" th:href="@{/auteurs/insertion}"> Nouvel auteur</a>
+                    </div>
                 </div>
             </div>
         </div>

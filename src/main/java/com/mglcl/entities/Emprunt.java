@@ -61,30 +61,6 @@ public Emprunt() {
 	// TODO Auto-generated constructor stub
 }
 
-
-public Emprunt(Adherent adherent, Livre livre, Dictionnaire dictionnaire, Revue revue, Date dateEmprunt, Date dateRetour) {
-	super();
-	this.adherent = adherent;
-	this.livre = livre;
-	this.dictionnaire = dictionnaire;
-	this.revue = revue;
-	this.dateEmprunt = dateEmprunt;
-	this.dateRetour = dateRetour;
-}
-
-
-public Emprunt(Adherent adherent, Livre livre, Dictionnaire dictionnaire, Revue revue, int idEmprunt,Date dateEmprunt, Date dateRetour) {
-	super();
-	this.adherent = adherent;
-	this.livre = livre;
-	this.dictionnaire = dictionnaire;
-	this.revue = revue;
-	this.idEmprunt = idEmprunt;
-	this.dateEmprunt = dateEmprunt;
-	this.dateRetour = dateRetour;
-}
-
-
 public Adherent getAdherent() {
 	return adherent;
 }
@@ -154,12 +130,10 @@ public void setDateRetour(Date dateRetour) {
 	this.dateRetour = dateRetour;
 }
 
-
-@Override
-public String toString() {
-	return "Emprunt [adherent=" + adherent + ", livre=" + livre + ", dictionnaire=" + dictionnaire + ", revue=" + revue
-			+ ", idEmprunt=" + idEmprunt + ", dateEmprunt=" + dateEmprunt + ", dateRetour=" + dateRetour + "]";
+public static long getSerialversionuid() {
+	return serialVersionUID;
 }
+
 
 
 }

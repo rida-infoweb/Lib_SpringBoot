@@ -1,0 +1,53 @@
+<html layout:decorate="~{gabbarit}">
+
+<head>
+    <meta charset="ISO-8859-1">
+</head>
+<div layout:fragment="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="p-5">
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Nouveau dictionnaire</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <form action="#" th:action="@{/dictionnaires/insertion}" th:object="${dictionnaire}"
+                                    method="POST">
+                                    <div class="mb-3"> <input type="text" th:field="*{identificateurDictionnaire}" placeholder="IDENTIFICATEUR"
+                                            class="form-control">
+                                        <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('identificateurDictionnaire')}"
+                                            th:errors="*{identificateurDictionnaire}" />
+                                    </div>
+                                    <div class="mb-3"> <input type="number" step=0.01 th:field="*{prixDeVente}" placeholder="PRIX DE VENTE (DHS)"
+                                            class="form-control">
+                                        <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('prixDeVente')}"
+                                            th:errors="*{prixDeVente}" />
+                                    </div>                                    
+
+     <select th:field="*{langue}" class="form-control">
+        <option th:each="langue: ${langues}" th:value="${langue.idLangue}" th:text="${langue.langue}"></option>
+     </select>
+
+
+                                    <button type="submit" class="btn btn-info col-6 mt-2"> Insérer</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <a class="small" th:href="@{/dictionnaires/listes}"> Listes des dictionnaires</a>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</html>
