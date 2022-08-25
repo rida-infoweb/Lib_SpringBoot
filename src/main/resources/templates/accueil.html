@@ -34,7 +34,14 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                     Emprunts</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <p th:text="${emprunts}"></p>
+                                    <section th:if="${emprunts == null}">
+                                        <p th:text="${emprunts}"></p>
+                                    </section>
+                                    <Section th:if="${emprunts == null}">
+                                        <p>0</p>
+                                    </section></div>
                             </div>
                         </div>
                     </div>
@@ -49,7 +56,15 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Dictionnaires</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <p th:text="${dictionnaires}"></p>
+                                    <section th:if="${dictionnaires == null}">
+                                        <p th:text="${dictionnaires}"></p>
+                                    </section>
+                                    <Section th:if="${dictionnaires == null}">
+                                        <p>0</p>
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -62,7 +77,15 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Revues</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <p th:text="${revues}"></p>
+                                    <section th:if="${revues == null}">
+                                        <p th:text="${revues}"></p>
+                                    </section>
+                                    <Section th:if="${revues == null}">
+                                        <p>0</p>
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -75,7 +98,15 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                     Livres</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <p th:text="${livres}"></p>
+                                    <section th:if="${livres == null}">
+                                        <p th:text="${livres}"></p>
+                                    </section>
+                                    <Section th:if="${livres == null}">
+                                        <p>0</p>
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     </div>

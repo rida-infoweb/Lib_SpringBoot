@@ -13,7 +13,7 @@ import com.mglcl.services.DictionnaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-@Transactional
+@Transactional(readOnly = false)
 @Service
 public class DictionnaireLogic implements DictionnaireService{
 

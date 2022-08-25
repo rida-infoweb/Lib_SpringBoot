@@ -17,32 +17,38 @@
                             <div class="table-responsive">
                                 <form action="#" th:action="@{/adherents/insertion}" th:object="${adherent}"
                                     method="POST">
-                                    <div class="mb-3"> <input type="text" th:field="*{cin}" placeholder="CIN"
-                                            class="form-control">
+                                    <div class="mb-3">
+                                    <label class="mb-1 font-weight-bold">CIN :</label>
+                                     <input type="text" th:field="*{cin}" class="form-control">
                                         <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('cin')}"
                                             th:errors="*{cin}" />
                                     </div>
-                                    <div class="mb-3"> <input type="text" th:field="*{nom}" placeholder="Nom"
-                                            class="form-control">
+                                    <div class="mb-3"> 
+                                    <label class="mb-1 font-weight-bold">Nom :</label>
+                                    <input type="text" th:field="*{nom}" class="form-control">
                                         <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('nom')}"
                                             th:errors="*{nom}" />
 
                                     </div>
-                                    <div class="mb-3"> <input type="text" th:field="*{prenom}" placeholder="Prénom"
-                                            class="form-control">
+                                    <div class="mb-3">
+                                    <label class="mb-1 font-weight-bold">Prénom :</label>
+                                    <input type="text" th:field="*{prenom}" class="form-control">
                                         <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('prenom')}"
                                             th:errors="*{prenom}" />
                                     </div>
-                                    <div class="mb-3"> <input type="date" th:field="*{dateNaissance}" 
-                                            placeholder="Date de naissance" class="form-control">
+                                    <div class="mb-3"> 
+                                    <label class="mb-1 font-weight-bold">Date de naissance :</label>
+                                    <input type="date" th:field="*{dateNaissance}" class="form-control">
                                         <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('dateNaissance')}"
                                             th:errors="*{dateNaissance}" />
                                     </div>
-                                    <div class="mb-3"> <input type="text" th:field="*{adresse}" placeholder="Adresse"
-                                            class="form-control">
+                                    <div class="mb-3"> 
+                                    <label class="mb-1 font-weight-bold">Adresse :</label>
+                                    <input type="text" th:field="*{adresse}" class="form-control">
                                         <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('adresse')}"
                                             th:errors="*{adresse}" />
                                     </div>
+                                    <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}"/>
                                     <button type="submit" class="btn btn-info col-6"> Insérer</button>
                                 </form>
                             </div>

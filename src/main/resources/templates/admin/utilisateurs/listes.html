@@ -17,8 +17,10 @@
                             <div class="table-responsive text-center">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
-                                        <tr>
+                                        <tr>    
+                                        
                                             <th>Nom d'utilisateur</th>
+                                            <th>Adherent (CIN)</th>
                                             <th>Rôles</th>
                                             <th> Actions </th>
                                         </tr>
@@ -26,6 +28,7 @@
                                     <tbody>
                                         <tr th:each="utilisateur : ${listesUtilisateurs}">
                                             <td th:text="${utilisateur.username}"></td>
+                                            <td th:text="${utilisateur.adherent.cin}"></td>
  
        <td>
                <ul th:each="role : ${utilisateur.roles}">

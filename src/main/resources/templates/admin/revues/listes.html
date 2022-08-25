@@ -11,30 +11,28 @@
 
                     <div class="card shadow mb-4 mt-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Listes des livres</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Listes des revues</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive text-center">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Identificateur</th>
-                                            <th>Nombre de page</th>
-                                            <th>Prix de vente (DHS)</th>
-                                            <th>Auteur</th>
+                                            <th>Référence</th>
+                                            <th>Année de publication</th>
+                                            <th>Prix de vente</th>
                                             <th> Actions </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="livre : ${listesLivres}">
-                                            <td th:text="${livre.identificateurLivre}"></td>
-                                            <td th:text="${livre.nombrePage}"></td>
-                                            <td th:text="${livre.prixDeVente}"></td>
-                                            <td th:text="${livre.auteur.auteur}"></td> 
-                                            <td> <a th:href="@{/livres/modification/{idLivre}(idLivre=${livre.idLivre})}"
+                                        <tr th:each="revue : ${listesRevues}">
+                                            <td th:text="${revue.reference}"></td>
+                                            <td th:text="${revue.anneePublication}"></td>
+                                            <td th:text="${revue.prixDeVente}"></td>
+                                            <td> <a th:href="@{/revues/modification/{idRevue}(idRevue=${revue.idRevue})}"
                                                     class="btn btn-primary">Modifier</a>
-                                                <a th:href="@{/dictionnaires/suppression/{idLivre}(idLivre=${livre.idLivre})}"
-                                                	onClick="if (!(confirm('Voulez vous vraiment supprimer cet utilisateur ?'))) return false"
+                                                <a th:href="@{/revues/suppression/{idRevue}(idRevue=${revue.idRevue})}"
+                                                	onClick="if (!(confirm('Voulez vous vraiment supprimer cet adhérent ?'))) return false"
                                                     class="btn btn-danger">Supprimer</a>
                                             </td>
                                         </tr>
@@ -44,11 +42,9 @@
                         </div>
                     </div>
 
-                    
-                      <hr>
+                    <hr>
                     <div class="text-center">
-                        <a class="small" th:href="@{/livres/insertion}"> Nouveau livre</a>
-                        <br>
+                        <a class="small" th:href="@{/revues/insertion}"> Nouvelle revue</a>
                     </div>
                 </div>
             </div>

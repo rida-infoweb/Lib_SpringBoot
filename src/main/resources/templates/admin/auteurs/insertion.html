@@ -17,11 +17,13 @@
                             <div class="table-responsive">
                                 <form action="#" th:action="@{/auteurs/insertion}" th:object="${auTeur}"
                                     method="POST">
-                                    <div class="mb-3"> <input type="text" th:field="*{auteur}" placeholder="AUTEUR"
-                                            class="form-control">
+                                    <div class="mb-3"> 
+                                     <label class="mb-1 font-weight-bold">Auteur :</label>
+                                    <input type="text" th:field="*{auteur}" class="form-control">
                                         <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('auteur')}"
                                             th:errors="*{auteur}" />
                                     </div>
+                                     <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}"/>
                                     <button type="submit" class="btn btn-info col-6"> Insérer</button>
                                 </form>
                             </div>

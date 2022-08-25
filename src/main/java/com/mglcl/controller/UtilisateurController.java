@@ -5,8 +5,10 @@ import java.util.Set;
 
 import javax.validation.Valid;
 
+import com.mglcl.entities.Adherent;
 import com.mglcl.entities.Role;
 import com.mglcl.entities.User;
+import com.mglcl.services.AdherentService;
 import com.mglcl.services.RoleService;
 import com.mglcl.services.UtilisateurService;
 
@@ -28,7 +30,8 @@ public class UtilisateurController {
 	  
 	  @Autowired
 	  private RoleService roleService;
-	  
+	  @Autowired
+	  private AdherentService adherentService;	  
 	  @Autowired
 	  public UtilisateurController (UtilisateurService utilisateurService) {
 		  this.utilisateurService=utilisateurService;
@@ -55,8 +58,11 @@ public class UtilisateurController {
 	    public String modificationUtilisateur(@PathVariable(value = "id") int id, Model model ) {
 	    	User utilisateur = utilisateurService.getUserById(id);
 	    	List<Role> roles =roleService.getAllRoles();
+	    	List<Adherent> adherents = adherentService.getAllAdherents(); 	
+
 		        model.addAttribute("utilisateur", utilisateur);
 		        model.addAttribute("roles", roles);
+		        model.addAttribute("adherents", adherents);
 
 		        return "admin/utilisateurs/modification";
 	    	  }

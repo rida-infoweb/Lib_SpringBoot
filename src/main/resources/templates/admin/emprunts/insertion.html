@@ -1,0 +1,73 @@
+<html layout:decorate="~{gabbarit}">
+
+<head>
+    <meta charset="ISO-8859-1">
+</head>
+<div layout:fragment="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="p-5">
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Nouvel emprunt</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <form action="#" th:action="@{/emprunts/insertion}" th:object="${emprunt}"
+                                    method="POST">
+                                    <label class="mb-1 font-weight-bold">Adhérent (CIN):</label>
+                                         <select th:field="*{adherent}" class="form-control">
+                                         <option th:each="adherent: ${adherents}" th:value="${adherent.idAdherent}" th:text="${adherent.cin}"></option>
+                                         </select>
+                                     <label class="mb-1 mt-2 font-weight-bold">Dictionnaire (Identificateur) :</label>
+                                     <select th:field="*{dictionnaire}" class="form-control">
+                                     <option th:each="dictionnaire: ${dictionnaires}" th:value="${dictionnaire.idDictionnaire}" th:text="${dictionnaire.identificateurDictionnaire}"></option>
+                                     </select>
+                                     
+                                     <label class="mb-1 mt-2 font-weight-bold">Revue (Référence) :</label>
+                                     <select th:field="*{revue}" class="form-control">
+                                     <option th:each="revue: ${revues}" th:value="${revue.idRevue}" th:text="${revue.reference}"></option>
+                                     </select>
+                                     
+                                     <label class="mb-1 mt-2 font-weight-bold">Livre (Identificateur):</label>
+                                     <select th:field="*{livre}" class="form-control">
+                                     <option th:each="livre: ${livres}" th:value="${livre.idLivre}" th:text="${livre.identificateurLivre}"></option>
+                                     </select>
+                                    
+                                    
+                                    
+                                    <div class="mb-3"> 
+                                    <label class="mb-1 font-weight-bold">Date d'emprunt :</label>
+                                    <input type="date" th:field="*{dateEmprunt}" class="form-control">
+                                        <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('dateEmprunt')}"
+                                            th:errors="*{dateEmprunt}" />
+                                    </div>
+                                    <div class="mb-3"> 
+                                    <label class="mb-1 font-weight-bold">Date de retour :</label>
+                                    <input type="date" th:field="*{dateRetour}" class="form-control">
+                                        <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('dateRetour')}"
+                                            th:errors="*{dateRetour}" />
+                                    </div>                                    
+
+                                    <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}"/>
+
+                                    <button type="submit" class="btn btn-info col-6 mt-2"> Insérer</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <a class="small" th:href="@{/emprunts/listes}"> Listes des emprunts</a>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</html>

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mglcl.services.SecurityService;
-@Transactional
+@Transactional(readOnly = false)
 @Service
 public class SecurityServiceImpl implements SecurityService{
     @Autowired

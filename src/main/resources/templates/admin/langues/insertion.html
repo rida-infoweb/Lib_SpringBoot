@@ -17,11 +17,13 @@
                             <div class="table-responsive">
                                 <form action="#" th:action="@{/langues/insertion}" th:object="${lAngue}"
                                     method="POST">
-                                    <div class="mb-3"> <input type="text" th:field="*{langue}" placeholder="LANGUE"
-                                            class="form-control">
+                                    <div class="mb-3"> 
+                                     <label class="mb-1 font-weight-bold">Langue :</label>
+                                    <input type="text" th:field="*{langue}" class="form-control">
                                         <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('langue')}"
                                             th:errors="*{langue}" />
                                     </div>
+                                    <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}"/>
                                     <button type="submit" class="btn btn-info col-6"> Insérer</button>
                                 </form>
                             </div>

@@ -33,8 +33,7 @@ private String reference ;
 @OneToMany(mappedBy="revue",fetch = FetchType.LAZY)
 private Set<Emprunt> emprunts;
 
-@NotNull
-@NotBlank (message = "Ce champ est obligatoire !")
+@NotNull(message = "Ce champ est obligatoire !")
 @DateTimeFormat(pattern = "yyyy-MM-dd")
 @Temporal(TemporalType.DATE)
 private Date anneePublication;

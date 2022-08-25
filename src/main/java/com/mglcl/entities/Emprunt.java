@@ -43,14 +43,12 @@ private Revue revue;
 @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 private int idEmprunt;
 
-@NotNull
-@NotBlank (message = "Ce champ est obligatoire !")
+@NotNull(message = "Ce champ est obligatoire !")
 @DateTimeFormat(pattern = "yyyy-MM-dd")
 @Temporal(TemporalType.DATE)
 private Date dateEmprunt;
 
-@NotNull
-@NotBlank (message = "Ce champ est obligatoire !")
+@NotNull (message = "Ce champ est obligatoire !")
 @DateTimeFormat(pattern = "yyyy-MM-dd")
 @Temporal(TemporalType.DATE)
 private Date dateRetour;

@@ -12,7 +12,7 @@ import com.mglcl.services.UserService;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-@Transactional
+@Transactional(readOnly = false)
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired

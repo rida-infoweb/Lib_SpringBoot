@@ -17,22 +17,29 @@
                             <div class="table-responsive">
                                 <form action="#" th:action="@{/livres/insertion}" th:object="${livre}"
                                     method="POST">
-                                    <div class="mb-3"> <input type="text" th:field="*{identificateurLivre}" placeholder="IDENTIFICATEUR"
-                                            class="form-control">
+                                    <div class="mb-3"> 
+                                    <label class="mb-1 font-weight-bold">Identificateur :</label>
+                                    <input type="text" th:field="*{identificateurLivre}"class="form-control">
                                         <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('identificateurLivre')}"
                                             th:errors="*{identificateurLivre}" />
                                     </div>
-                                    <div class="mb-3"> <input type="number" th:field="*{nombrePage}" placeholder="NOMBRE DE PAGE"
-                                            class="form-control">
+                                    <div class="mb-3">
+                                    <label class="mb-1 font-weight-bold">Nombre de page :</label>
+                                     <input type="number" th:field="*{nombrePage}" class="form-control">
                                         <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('nombrePage')}"
                                             th:errors="*{nombrePage}" />
                                     </div>                                    
-
-     <select th:field="*{auteur}" class="form-control">
-        <option th:each="auteur: ${auteurs}" th:value="${auteur.idAuteur}" th:text="${auteur.auteur}"></option>
-     </select>
-
-
+                                    <div class="mb-3">
+                                    <label class="mb-1 font-weight-bold">Prix de vente (DHS) :</label>
+                                     <input type="number" step=0.01 th:field="*{prixDeVente}" class="form-control">
+                                        <p class="alert alert-danger mt-2 mb-2" th:if="${#fields.hasErrors('prixDeVente')}"
+                                            th:errors="*{prixDeVente}" />
+                                    </div>
+                                    <label class="mb-1 font-weight-bold">Auteur (DHS) :</label>
+                                    <select th:field="*{auteur}" class="form-control">
+                                    <option th:each="auteur: ${auteurs}" th:value="${auteur.idAuteur}" th:text="${auteur.auteur}"></option>
+                                    </select>
+                                    <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}"/>
                                     <button type="submit" class="btn btn-info col-6 mt-2"> Insérer</button>
                                 </form>
                             </div>

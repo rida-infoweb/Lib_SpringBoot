@@ -19,13 +19,15 @@
                                     <input type="hidden" th:field="*{id}" />
                                     <input type="hidden" th:field="*{username}" />
                                     <input type="hidden" th:field="*{password}" />
-<select class="form-control" id="parts" name="roles" multiple="multiple">
-    <option th:each="role : ${roles}"
-            th:selected="${role}"
-            th:value="${role.id}"
-            th:text="${role.name}">Part name</option>
-</select>
-
+                                    <label class="mb-1 font-weight-bold">Roles :</label>
+                                    <select class="form-control" id="roles" name="roles" multiple="multiple">
+                                    <option th:each="role : ${roles}"th:selected="${role}"th:value="${role.id}" th:text="${role.name}">Rôle</option>
+                                    </select>
+                                    <label class="mb-1 mt-2 font-weight-bold">Adherent (CIN):</label>
+                                     <select th:field="*{adherent}" class="form-control">
+                                     <option th:each="adherent: ${adherents}" th:value="${adherent.idAdherent}" th:text="${adherent.cin}"></option>
+                                     </select>
+<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}"/>
  
                                     <button type="submit" class="btn btn-info col-6 mt-2"> Modifier</button>
                                 </form>

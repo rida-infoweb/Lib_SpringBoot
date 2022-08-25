@@ -17,7 +17,7 @@ import com.mglcl.repository.RoleRepository;
 import com.mglcl.repository.UserRepository;
 import com.mglcl.services.RoleService;
 
-@Transactional
+@Transactional(readOnly = false)
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
     @Autowired
