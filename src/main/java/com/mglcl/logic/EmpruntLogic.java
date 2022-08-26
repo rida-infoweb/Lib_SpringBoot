@@ -3,6 +3,7 @@ package com.mglcl.logic;
 import java.util.List;
 import java.util.Optional;
 
+import com.mglcl.entities.Adherent;
 import com.mglcl.entities.Emprunt;
 import com.mglcl.entities.Livre;
 import com.mglcl.repository.AdherentRepository;
@@ -62,6 +63,12 @@ public class EmpruntLogic implements EmpruntService{
 	@Override
 	public long getEmpruntCount() {
 		return empruntRepository.count();
+	}
+
+	@Override
+	public List<Emprunt> getEmpruntByAdherent(Adherent adherent) {
+		    return empruntRepository.findByAdherent(adherent);	
+		
 	}
 
 

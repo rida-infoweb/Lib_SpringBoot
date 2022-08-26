@@ -28,8 +28,14 @@
                                     <tbody>
                                         <tr th:each="utilisateur : ${listesUtilisateurs}">
                                             <td th:text="${utilisateur.username}"></td>
-                                            <td th:text="${utilisateur.adherent.cin}"></td>
- 
+                                            <td>
+                                            <span th:if="${utilisateur.adherent == null}">
+                                            <p>CIN</p>
+                                            </span>
+                                             <span th:unless="${utilisateur.adherent == null}">
+                                             <p th:text="${utilisateur.adherent.cin}"></p>
+</span>
+                                             </td> 
        <td>
                <ul th:each="role : ${utilisateur.roles}">
         <li><span th:text="${role.name}"> Rôle </span></li>

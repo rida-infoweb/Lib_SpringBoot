@@ -13,17 +13,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mglcl.entities.Role;
 import com.mglcl.entities.User;
-import com.mglcl.repository.RoleRepository;
 import com.mglcl.repository.UserRepository;
-import com.mglcl.services.RoleService;
+
 
 @Transactional(readOnly = false)
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private RoleService roleService;
 
     @Override
     @Transactional(readOnly = true)
@@ -32,19 +29,8 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         if (user == null) throw new UsernameNotFoundException(username);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        
-        if(user.getUsername().equals("administrateur")) {
-        	Role adminrole = new Role();
-        	adminrole.setName("ROLE_ADMIN");
-        	roleService.saveRole(adminrole);
-        	 grantedAuthorities.add(new SimpleGrantedAuthority(adminrole.getName()));
-        }
-        else {
-        	Role userrole = new Role();
-        	userrole.setName("ROLE_USER");
-        	roleService.saveRole(userrole);
-        	 grantedAuthorities.add(new SimpleGrantedAuthority(userrole.getName()));
-        	
+        for (Role role : user.getRoles()){
+            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);

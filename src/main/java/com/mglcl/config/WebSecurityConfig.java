@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @SuppressWarnings("deprecation")
 @Configuration
@@ -25,20 +26,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
     
-  
+    @Autowired
+	AuthenticationSuccessHandler successHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
                 .antMatchers("/css/**", "/js/**","/scss/**","/vendor/**", "/registration").permitAll()
-                .antMatchers("/adherents/**","/Utilisateurs/**").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/adherents/**","/utilisateurs/**","/","/accueil","/auteurs/**"
+                		,"/dictionnaires/**","/emprunts/**","/langues/**","/livres/**","/revues/**",
+                		"/roles/**").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/adherent/**").hasAuthority("ROLE_USER")
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
-                .loginPage("/login")
+                .loginPage("/")
                 .permitAll()
-                .defaultSuccessUrl("/accueil", true)
+                .defaultSuccessUrl("/login", true)
+                .successHandler(successHandler)
+               // 
                 .and()
             .logout()
                 .permitAll();

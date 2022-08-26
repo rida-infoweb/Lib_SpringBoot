@@ -1,0 +1,73 @@
+<html layout:decorate="~{gabbarit}">
+
+<head>
+    <meta charset="ISO-8859-1">
+</head>
+<div layout:fragment="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="p-5">
+
+                    <div class="card shadow mb-4 mt-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Listes des emprunts</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive text-center">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Document</th>
+                                            <th>Date d'emprunt</th>
+                                            <th>Date de retour</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="emprunt: ${listesEmprunts}">
+                                            <td>
+                                            <ul>
+                                            <li th:text="'Identificateur du livre : ' +${emprunt.livre.identificateurLivre}"></li>
+                                             <li th:text="'Identificateur de dictionnaire : ' +${emprunt.dictionnaire.identificateurDictionnaire}"></li>
+                                             <li th:text="'Référence de revue : ' +${emprunt.revue.reference}"></li>
+                                            
+                                            </ul>
+                                            
+                                            </td>
+                                            <td th:text="${emprunt.dateEmprunt}"></td>
+                                            <td th:text="${emprunt.dateRetour}"></td> 
+                                            
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                      <hr>
+                    <div class="text-center">
+
+                    <section th:if="${adherent.cin != null}">
+                        <div class="card">
+                            <h5 class="card-header" th:text="'Adhérent N° :  ' + ${adherent.idAdherent}"></h5>
+                            <div class="card-body">
+                                <p class="card-text" th:text="'CIN :  ' + ${adherent.cin}"></p>
+                                <p class="card-text" th:text="'Nom :  ' + ${adherent.nom}"></p>
+                                <p class="card-text" th:text="'Prénom :  ' + ${adherent.prenom}"></p>
+                                <p class="card-text" th:text="'Date de naissance :  ' + ${adherent.dateNaissance}"></p>
+                                <p class="card-text" th:text="'Adresse :  ' + ${adherent.adresse}"></p>
+
+                            </div>
+                        </div>
+                    </section>                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</html>

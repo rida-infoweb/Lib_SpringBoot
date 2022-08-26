@@ -3,6 +3,7 @@ package com.mglcl.config;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.hibernate.Session;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
