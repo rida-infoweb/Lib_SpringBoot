@@ -40,6 +40,7 @@ public class UserServiceImpl implements UserService {
         if(user.getUsername().equals("administrateur")) {
         	Role adminrole = new Role();
         	adminrole.setName("ROLE_ADMIN");
+        	adminrole.setId(1l);
         	roleService.saveRole(adminrole);
         	List<Role> roles = new ArrayList<Role>();
         	roles.add(adminrole);
@@ -47,7 +48,13 @@ public class UserServiceImpl implements UserService {
         	userRepository.save(user);
     }
         else {
-        	
+        	Role userole = new Role();
+        	userole.setName("ROLE_USER");
+        	userole.setId(2l);
+        	roleService.saveRole(userole);
+        	List<Role> roles = new ArrayList<Role>();
+        	roles.add(userole);
+        	user.setRoles(roles);        	
 
         	userRepository.save(user);
         }

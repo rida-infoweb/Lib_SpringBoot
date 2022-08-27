@@ -23,7 +23,7 @@
                                             <th>Date de retour</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody th:if="${listesEmprunts != null}">
                                         <tr th:each="emprunt: ${listesEmprunts}">
                                             <td>
                                             <ul>
