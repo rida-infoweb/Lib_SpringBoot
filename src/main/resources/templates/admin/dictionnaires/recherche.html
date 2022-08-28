@@ -1,0 +1,48 @@
+<html layout:decorate="~{gabbarit}">
+
+<head>
+    <meta charset="ISO-8859-1">
+</head>
+<div layout:fragment="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="p-5">
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Chercher un dictionnaire</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+
+                                  <form action="#" th:action="@{/dictionnaires/recherche}" th:object="${dictionnaire}"
+                                    method="POST">
+                                    <div class="mb-3"> <input type="number" th:field="*{idDictionnaire}" placeholder="ID"
+                                            class="form-control">
+                                    </div>
+                                    <button type="submit" class="btn btn-info col-6"> Chercher</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="card">
+                            <h5 class="card-header" th:text="'Dictionnaire N° :  ' + ${dictionnaire.idDictionnaire}"></h5>
+                            <div class="card-body">
+                                <p class="card-text" th:text="'Identificateur :  ' + ${dictionnaire.identificateurDictionnaire}"></p>
+                                           <p class="card-text" th:text="'Prix de vente (DHS) :  ' + ${dictionnaire.prixDeVente}"></p>
+                            </div>
+                        </div>
+
+                    <div class="text-center">
+                        <a class="small" th:href="@{/dictionnaires/listes}"> Listes des dictionnaires</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</html>

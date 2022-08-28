@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import com.mglcl.entities.Livre;
 import com.mglcl.entities.Auteur;
+import com.mglcl.entities.Dictionnaire;
 import com.mglcl.services.AuteurService;
 import com.mglcl.services.DictionnaireService;
 import com.mglcl.services.LanguesService;
@@ -41,7 +42,17 @@ public class LivreController {
 	    	model.addAttribute("listesLivres", listesLivres);
 			return "admin/livres/listes";
 	    }
-	  
+	    @GetMapping("/recherche")
+	    public String rechercheLivre(Model model) {
+	    	Livre livre = new Livre();
+	    	model.addAttribute("livre", livre);
+	        return "admin/livres/recherche";
+	    }
+	    @PostMapping("/recherche")
+	    public String rechercheLivre(@ModelAttribute Livre livre, Model model) {
+	        model.addAttribute("livre", livreService.getLivreById(livre.getIdLivre()));
+	        return "admin/livres/recherche";
+	    }
 	    @GetMapping("insertion")
 	    public String insertionLivre(Model model) {
 	    	Livre livre = new Livre();

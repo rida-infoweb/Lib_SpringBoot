@@ -39,7 +39,17 @@ public class DictionnaireController {
 	    	model.addAttribute("listesDictionnaires", listesDictionnaires);
 			return "admin/dictionnaires/listes";
 	    }
-	  
+	    @GetMapping("/recherche")
+	    public String rechercheDictionnaire(Model model) {
+	    	Dictionnaire dictionnaire = new Dictionnaire();
+	    	model.addAttribute("dictionnaire", dictionnaire);
+	        return "admin/dictionnaires/recherche";
+	    }
+	    @PostMapping("/recherche")
+	    public String rechercheDictionnaire(@ModelAttribute Dictionnaire dictionnaire, Model model) {
+	        model.addAttribute("dictionnaire", dictionnaireService.getDictionnaireById(dictionnaire.getIdDictionnaire()));
+	        return "admin/dictionnaires/recherche";
+	    }
 	    @GetMapping("insertion")
 	    public String insertionDictionnaire(Model model) {
 	    	Dictionnaire dictionnaire = new Dictionnaire();

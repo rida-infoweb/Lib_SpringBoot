@@ -1,0 +1,52 @@
+<html layout:decorate="~{gabbarit}">
+
+<head>
+    <meta charset="ISO-8859-1">
+</head>
+<div layout:fragment="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="p-5">
+    <div class="col-md-12" align="center">
+     <a class="small" th:href="@{/livre/recherche}"> Chercher un livre</a>
+    </div>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Chercher un livre</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+
+                                  <form action="#" th:action="@{/livres/recherche}" th:object="${livre}"
+                                    method="POST">
+                                    <div class="mb-3"> <input type="number" th:field="*{idLivre}" placeholder="ID"
+                                            class="form-control">
+                                    </div>
+                                    <button type="submit" class="btn btn-info col-6"> Chercher</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="card">
+                            <h5 class="card-header" th:text="'Livre N° :  ' + ${livre.idLivre}"></h5>
+                            <div class="card-body">
+                                <p class="card-text" th:text="'Identificateur :  ' + ${livre.identificateurLivre}"></p>
+                                <p class="card-text" th:text="'Nombre de page :  ' + ${livre.nombrePage}"></p>
+                                <p class="card-text" th:text="'Prix de vente (DHS) :  ' + ${livre.prixDeVente}"></p>
+                              <!--   <p class="card-text" th:text="'Auteur :  ' + ${livre.auteur.auteur}"></p> -->
+                            </div>
+                        </div>
+
+                    <div class="text-center">
+                        <a class="small" th:href="@{/livres/listes}"> Listes des livres</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</html>

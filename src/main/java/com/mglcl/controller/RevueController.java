@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.mglcl.entities.Langue;
+import com.mglcl.entities.Livre;
 import com.mglcl.entities.Revue;
 import com.mglcl.entities.Role;
 import com.mglcl.services.AuteurService;
@@ -38,7 +39,17 @@ public class RevueController {
 	    	model.addAttribute("listesRevues", listesRevues);
 			return "admin/revues/listes";
 	    }
-
+	    @GetMapping("/recherche")
+	    public String rechercheLivre(Model model) {
+	    	Revue revue = new Revue();
+	    	model.addAttribute("revue", revue);
+	        return "admin/revues/recherche";
+	    }
+	    @PostMapping("/recherche")
+	    public String rechercheLivre(@ModelAttribute Revue revue, Model model) {
+	        model.addAttribute("revue", revueService.getRevueById(revue.getIdRevue()));
+	        return "admin/revues/recherche";
+	    }
 	    @GetMapping("insertion")
 	    public String insertionRevue(Model model) {
 	    	Revue revue = new Revue();

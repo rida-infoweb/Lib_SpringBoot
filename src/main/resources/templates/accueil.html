@@ -59,11 +59,15 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
                                     <p th:text="${dictionnaires}"></p>
                                     <section th:if="${dictionnaires == null}">
-                                        <p th:text="${dictionnaires}"></p>
+                                        <p th:text="${dictionnaires}">                                        
+                                        </p>
+                                        
                                     </section>
                                     <Section th:if="${dictionnaires == null}">
                                         <p>0</p>
                                     </section>
+                                    <a class="small" th:href="@{/dictionnaires/listes}"> Listes</a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -85,6 +89,7 @@
                                     <Section th:if="${revues == null}">
                                         <p>0</p>
                                     </section>
+                                    <a class="small" th:href="@{/revues/listes}"> Listes</a>
                                 </div>
                             </div>
                         </div>
@@ -106,6 +111,7 @@
                                     <Section th:if="${livres == null}">
                                         <p>0</p>
                                     </section>
+                                    <a class="small" th:href="@{/livres/listes}"> Listes</a>
                                 </div>
                             </div>
                         </div>
@@ -113,6 +119,8 @@
                 </div>
             </div>
         </div>
+
+    
     </div>
 </div>
 
